@@ -1,27 +1,30 @@
-open class Person(protected val name: String, protected val age: Int) {
+open class Animal(protected val name: String, protected val age: Int, protected val weight: Int) {
     fun walk() {
         println("$name can walk")
     }
 }
-class Driver(name: String, age: Int, val experience: Int): Person(name, age) {
-    fun drive(){
-        println("$name can drive")
+class Giraf(name: String, age: Int, weight: Int, val neckLength: Int): Animal(name, age, weight) {
+    fun neck(){
+        println("$name has a long neck")
     }
 }
-class Teacher(name: String, age: Int, val subject: String): Person(name, age)
+class Elephant(name: String, age: Int, weight: Int): Animal(name, age, weight)
 
+class Flamingo(name: String, age: Int, weight: Int): Animal(name, age, weight) {
+    fun fly(){
+        println("$name can fly")
+    }
+}
 fun main() {
-    val person1 = Person("Ivan", 16)
-//    person1.walk()
-    val person2 = Person("Avas", 15)
-//    person2.walk()
-    val driver1 = Driver("Carl", 33, 10)
-//    driver1.walk()
-//    driver1.drive()
-    val teacher1 = Teacher("Ludmila Petrovna", 40,"chemistry")
-//    teacher1.walk()
-    val people = listOf<Person>(person1, person2, driver1, teacher1)
-    for (person in people) {
-        person.walk()
+    val animal1 = Animal("Ivan", 16, 123)
+    val animal2 = Animal("Avas", 15, 54)
+    val giraf = Giraf("Petr", 17, 700,9)
+    giraf.neck()
+    val elephant = Elephant("Masha", 34, 1000)
+    val flamingo = Flamingo("Ira", 10, 50 )
+    flamingo.fly()
+    val zoo = listOf<Animal>(animal1, animal2, giraf, elephant, flamingo)
+    for (animal in zoo) {
+        animal.walk()
     }
 }
